@@ -1,0 +1,13 @@
+D:\C#\JPClientStart\JPClientStart\bin\Debug\netcoreapp3.1\JPClientStart.exe
+D:\C#\JPClientStart\JPClientStart\bin\Debug\netcoreapp3.1\JPClientStart.deps.json
+D:\C#\JPClientStart\JPClientStart\bin\Debug\netcoreapp3.1\JPClientStart.runtimeconfig.json
+D:\C#\JPClientStart\JPClientStart\bin\Debug\netcoreapp3.1\JPClientStart.runtimeconfig.dev.json
+D:\C#\JPClientStart\JPClientStart\bin\Debug\netcoreapp3.1\JPClientStart.dll
+D:\C#\JPClientStart\JPClientStart\bin\Debug\netcoreapp3.1\JPClientStart.pdb
+D:\C#\JPClientStart\JPClientStart\obj\Debug\netcoreapp3.1\JPClientStart.AssemblyInfoInputs.cache
+D:\C#\JPClientStart\JPClientStart\obj\Debug\netcoreapp3.1\JPClientStart.AssemblyInfo.cs
+D:\C#\JPClientStart\JPClientStart\obj\Debug\netcoreapp3.1\JPClientStart.csproj.CoreCompileInputs.cache
+D:\C#\JPClientStart\JPClientStart\obj\Debug\netcoreapp3.1\JPClientStart.dll
+D:\C#\JPClientStart\JPClientStart\obj\Debug\netcoreapp3.1\JPClientStart.pdb
+D:\C#\JPClientStart\JPClientStart\obj\Debug\netcoreapp3.1\JPClientStart.genruntimeconfig.cache
+D:\C#\JPClientStart\JPClientStart\obj\Debug\netcoreapp3.1\JPClientStart.csprojAssemblyReference.cache
