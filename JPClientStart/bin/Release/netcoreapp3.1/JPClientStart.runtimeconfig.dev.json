@@ -1,8 +1,0 @@
-{
-  "runtimeOptions": {
-    "additionalProbingPaths": [
-      "C:\\Users\\haipr\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\haipr\\.nuget\\packages"
-    ]
-  }
-}
