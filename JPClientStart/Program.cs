@@ -1,19 +1,17 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.IO;
+using System.Text.RegularExpressions;
 
 namespace JPClientStart
 {
     public class Program
     {
-        private static string CommandLine;
-
         public static string Path
         {
             get
             {
-                return CommandLine.Substring(1, 56);
+                return Regex.Match(commandLine, pathPattern).Value;
             }
         }
 
@@ -21,22 +19,29 @@ namespace JPClientStart
         {
             get
             {
-                return CommandLine.Substring(59);
+                return commandLine.Substring(Path.Length + 1);
             }
         }
 
-        private static bool GotClientCommandLine = false;
+        private static string localePattern = @"--locale=[a-z]{2}_[A-Z]{2} ";
+
+        private static string pathPattern = @""".*RiotClientServices\.exe""";
+
+        private static string commandLine;
+
+        private static bool gotClientcommandLine = false;
 
         private static void Main()
         {
+
             foreach (var process in Process.GetProcesses())
             {
                 try
                 {
                     if (process.ProcessName == "RiotClientServices")
                     {
-                        CommandLine = process.GetCommandLine();
-                        GotClientCommandLine = true;
+                        commandLine = process.GetCommandLine();
+                        gotClientcommandLine = true;
                     }
                     if (process.ProcessName == "LeagueClient")
                     {
@@ -55,9 +60,9 @@ namespace JPClientStart
                     // Intentionally empty - the process exited before getting details.
                 }
             }
-            if (!GotClientCommandLine)
+            if (!gotClientcommandLine)
             {
-                Console.WriteLine("Client process not found! Press any key to exit!");
+                Console.WriteLine("Client process not found! Press any key to exit...");
                 Console.ReadLine();
                 return;
             }
@@ -66,10 +71,10 @@ namespace JPClientStart
             while (!quit)
             {
                 Console.WriteLine("Select Client locale: ");
-                Console.WriteLine("1. vi-VN");
-                Console.WriteLine("2. en-US");
-                Console.WriteLine("3. ja-JP");
-                Console.WriteLine("4. ko-KR");
+                Console.WriteLine("1. vn_VN");
+                Console.WriteLine("2. en_US");
+                Console.WriteLine("3. ja_JP");
+                Console.WriteLine("4. ko_KR");
 
                 int option = int.Parse(Console.ReadLine());
 
@@ -78,23 +83,19 @@ namespace JPClientStart
                 switch (option)
                 {
                     case 1:
-                        CommandLine = CommandLine.Replace("--locale=en_US", "--locale=vi_VN");
-                        CommandLine = CommandLine.Replace("--locale=vi_VN", "--locale=vi_VN");
+                        commandLine = Regex.Replace(commandLine, localePattern, "--locale=vn_VN ");
                         quit = true;
                         break;
                     case 2:
-                        CommandLine = CommandLine.Replace("--locale=en-US", "--locale=en_US");
-                        CommandLine = CommandLine.Replace("--locale=vi_VN", "--locale=en_US");
+                        commandLine = Regex.Replace(commandLine, localePattern, "--locale=en_US ");
                         quit = true;
                         break;
                     case 3:
-                        CommandLine = CommandLine.Replace("--locale=en_US", "--locale=ja_JP");
-                        CommandLine = CommandLine.Replace("--locale=vi_VN", "--locale=ja_JP");
+                        commandLine = Regex.Replace(commandLine, localePattern, "--locale=ja_JP ");
                         quit = true;
                         break;
                     case 4:
-                        CommandLine = CommandLine.Replace("--locale=en-US", "--locale=ko_KR");
-                        CommandLine = CommandLine.Replace("--locale=vi_VN", "--locale=ko_KR");
+                        commandLine = Regex.Replace(commandLine, localePattern, "--locale=ko_KR ");
                         quit = true;
                         break;
                     default:
@@ -102,11 +103,13 @@ namespace JPClientStart
                         break;
                 }
             }
+            Console.WriteLine(Path);
             Console.WriteLine(Args);
             var client = Process.Start(Path, Args);
             if (client.Id != 0)
             {
-                Console.WriteLine("Client Started successfully! Press any key to exit!");
+                Console.WriteLine("Client Started successfully! Press any key to exit...");
+                Console.ReadLine();
             }
         }
     }

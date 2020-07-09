@@ -60,6 +60,10 @@
           "System.Runtime.dll": {
             "assemblyVersion": "4.2.2.0",
             "fileVersion": "4.700.20.27001"
+          },
+          "System.Text.RegularExpressions.dll": {
+            "assemblyVersion": "4.2.2.0",
+            "fileVersion": "4.700.20.27001"
           }
         },
         "native": {
