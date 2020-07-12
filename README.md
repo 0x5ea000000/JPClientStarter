@@ -7,7 +7,7 @@ Do as your own risk!!!
 
 ## Changelogs
 ### V2:
-- add quick file copy from Riot LOL (or my language pack) to Garena LOL.
+- add quick file copy from Riot LOL (or my language pack) to Garena LOL (didnt work until new 10.15 pack :D)
 
 ### V1:
 - add quick language changer.
